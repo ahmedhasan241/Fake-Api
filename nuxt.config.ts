@@ -29,4 +29,6 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+    // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-env
 });
