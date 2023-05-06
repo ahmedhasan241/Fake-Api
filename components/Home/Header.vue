@@ -67,6 +67,14 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+
+
+      <button
+        v-for="number in 5"
+        @click='store.getProductsRange((number -1) *5 , number * 5)'
+      >
+      {{number}}
+      </button>
   </div>
 </template>
 
@@ -76,8 +84,10 @@ import { useCounterStore } from "@/stores/counter";
 const store = useCounterStore();
 
 onMounted(() => {
-  store.getProducts({ limit: 5 });
-  console.log(store.products);
+  store.getProducts({ limit: 20 });
+
+  
+  // [1] [2] [3] [4] [5]
 });
 </script>
 
