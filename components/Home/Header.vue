@@ -1,22 +1,23 @@
 <template>
-  <div id="carouselExample" class="slide-show carousel slide">
+  <div id="carouselExample" class="slide-show carousel slide mb-5">
     <div class="container carousel-inner text-light">
-      <div
-        class="carousel-item active p-5 text-center"
-        v-for="product in store.products"
-        :key="product.id"
-      >
+      <div class="carousel-item active p-5 text-center">
         <div class="row justify-content-md-around">
           <div class="col-xs-12 col-lg-5 my-5 px-2">
-            <h1>{{ product.title }}</h1>
-            <p class="mt-5 text-center">{{ product.description }}}</p>
+            <h1>Mac Book Pro</h1>
+            <p class="mt-5 text-center">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt
+              temporibus, totam adipisci accusamus illo odio voluptatem rerum
+              velit alias aliquam quisquam autem perspiciatis illum tempora
+              officiis, quod odit modi! Minima!
+            </p>
           </div>
           <div class="col-lg-4 d-none d-lg-block mt-5">
-            <img :src="product.image" alt="..." />
+            <img src="@/assets/images/50061505_575246.png" alt="..." />
           </div>
         </div>
       </div>
-      <!-- <div class="carousel-item p-5 container text-center">
+      <div class="carousel-item p-5 container text-center">
         <div class="row justify-content-md-around">
           <div class="col-xs-12 col-lg-5 my-5 px-2">
             <h1>Iphone Xs Max</h1>
@@ -47,7 +48,7 @@
             <img src="@/assets/images/pic.png" alt="..." />
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
     <button
       class="carousel-control-prev"
@@ -67,29 +68,10 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-
-
-      <button
-        v-for="number in 5"
-        @click='store.getProductsRange((number -1) *5 , number * 5)'
-      >
-      {{number}}
-      </button>
   </div>
 </template>
 
-<script setup>
-import { useCounterStore } from "@/stores/counter";
-
-const store = useCounterStore();
-
-onMounted(() => {
-  store.getProducts({ limit: 20 });
-
-  
-  // [1] [2] [3] [4] [5]
-});
-</script>
+<script setup></script>
 
 <style scoped>
 .slide-show {

@@ -34,7 +34,7 @@
               <p>My Profile</p>
             </NuxtLink>
             <NuxtLink
-              to="/"
+              to="/cart"
               class="links d-flex mx-2 text-secondary text-decoration-none"
             >
               <Icon
