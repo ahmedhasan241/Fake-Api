@@ -9,10 +9,10 @@
           <NuxtLink class="text-decoration-none" to="/">Home</NuxtLink>
         </li>
         <li class="breadcrumb-item">
-          {{ store.products.category }}
+          {{ store.product.category }}
         </li>
         <li class="breadcrumb-item text-dark active" aria-current="page">
-          {{ store.products.title }}
+          {{ store.product.title }}
         </li>
       </ol>
     </nav>
@@ -21,7 +21,7 @@
         <div class="card border-0 mb-3 d-flex flex-sm-row flex-xs-column">
           <div class="card-image">
             <img
-              :src="`${store.products.image}`"
+              :src="`${store.product.image}`"
               class="rounded-start"
               alt="..."
               style="width: 270px; height: 270px"
@@ -29,9 +29,9 @@
           </div>
 
           <div class="card-body mx-md-5 mx-sm-0">
-            <h3 class="card-text">{{ store.products.title }}</h3>
+            <h3 class="card-text">{{ store.product.title }}</h3>
             <p class="card-text fs-4 mt-5 text-danger">
-              $ {{ store.products.price }}
+              $ {{ store.product.price }}
             </p>
             <h6 class="card-text mb-3">
               Availability:
@@ -40,7 +40,7 @@
             <h6 class="card-text mb-3">
               Category:
               <span class="text-secondary ms-3">{{
-                store.products.category
+                store.product.category
               }}</span>
             </h6>
             <h6 class="card-text">Free Shipping</h6>
@@ -74,11 +74,11 @@
           <span class="fs-3 my-5 fw-medium text-primary"
             >Product Infomation</span
           >
-          <p class="mt-5 fs-5">{{ store.products.description }}</p>
+          <p class="mt-5 fs-5">{{ store.product.description }}</p>
         </div>
       </div>
       <div class="col-2"></div>
-      <StoreRelatedProduct :products="store.categoryProducts" />
+      <StoreRelatedProduct :products="store.products" />
     </div>
   </div>
 </template>
@@ -89,10 +89,11 @@ import { useProductStore } from "~/stores/product";
 const store = useProductStore();
 const route = useRoute();
 const id = route.params.id;
+console.log(id);
 const categoryProducts = store.categoryProducts;
-onMounted(() => {
-  store.getProduct(id);
-  store.getProductsCategory(store.products.category);
+onMounted(async () => {
+  await store.getProduct(id);
+  store.getProductsCategory(store.product.category);
 });
 </script>
 

@@ -10,7 +10,7 @@
           >
           <a
             v-for="cate in store.categories"
-            @click="store.getProductsCategory('cate')"
+            @click="store.getProductsCategory(cate)"
             :key="cate.id"
             class="list-group-item list-group-item-action text-capitalize bg-light-subtle list-group-item-tertiary border-0"
             >{{ cate }}</a

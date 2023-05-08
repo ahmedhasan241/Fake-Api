@@ -1,20 +1,25 @@
 <template>
   <div class="container my-5">
-    {{ products }}
     <h1 class="my-5 text-center">Related Products</h1>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      <div v-for="prod in Products" :key="prod.id" class="col">
-        <div class="card border-1">
-          <img src="..." class="card-img-top" alt="..." />
+    <div class="card-group container mt-5">
+      <div class="row justify-content-around px-5">
+        <NuxtLink
+          class="card rounded text-decoration-none my-2 pt-3 mx-auto justify-content-center"
+          v-for="product in products.slice(0,3)"
+          :key="product.id"
+          style="width: 270px; height: 249px"
+          :to="`/store/${product.id}`"
+        >
+          <img
+            :src="`${product.image}`"
+            class="card-image mx-auto card-img-top"
+            alt="..."
+          />
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <p class="card-title mx-auto">{{ product.title }}</p>
+            <p class="card-text text-danger">$ {{ product.price }}</p>
           </div>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </div>

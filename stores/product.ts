@@ -27,7 +27,7 @@ export const useProductStore = defineStore("product", () => {
       },
     },
   ]); // 20
-
+  const product = ref([]);
   const categories = ref([
     "electronics",
     "jewelery",
@@ -47,19 +47,17 @@ export const useProductStore = defineStore("product", () => {
     let Api = `https://fakestoreapi.com/products/${params}`;
 
     let response = await fetch(Api);
-    products.value = await response.json();
+    product.value = await response.json();
   }
 
   async function getProductsCategory(params) {
     let Api = `https://fakestoreapi.com/products/category/${params}`;
 
     let response = await fetch(Api);
-    categoryProducts.value = await response.json();
-    console.log(products.value);
+    products.value = await response.json();
   }
-  function getProductsRange(start, length) {
-    console.log(products.value.slice(start, length));
-    return products.value.slice(start, length);
+  function getProductsRange(start, end) {
+    products.value = products.filter((prod) => prod.price <= end && prod.price >= start);
   }
   async function getProductsPrice(start, length) {
     let Api = `https://fakestoreapi.com/products`;
@@ -79,5 +77,6 @@ export const useProductStore = defineStore("product", () => {
     categories,
     getProduct,
     categoryProducts,
+    product,
   };
 });
