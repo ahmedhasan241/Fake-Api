@@ -13,6 +13,20 @@ export const useProductStore = defineStore("product", () => {
       },
     },
   ]); // 20
+  const categoryProducts = ref([
+    {
+      id: "",
+      title: "",
+      price: "",
+      description: "",
+      category: "",
+      image: "",
+      rating: {
+        rate: "",
+        count: "",
+      },
+    },
+  ]); // 20
 
   const categories = ref([
     "electronics",
@@ -29,12 +43,18 @@ export const useProductStore = defineStore("product", () => {
     let response = await fetch(Api);
     products.value = await response.json();
   }
+  async function getProduct(params) {
+    let Api = `https://fakestoreapi.com/products/${params}`;
+
+    let response = await fetch(Api);
+    products.value = await response.json();
+  }
 
   async function getProductsCategory(params) {
     let Api = `https://fakestoreapi.com/products/category/${params}`;
 
     let response = await fetch(Api);
-    products.value = await response.json();
+    categoryProducts.value = await response.json();
     console.log(products.value);
   }
   function getProductsRange(start, length) {
@@ -57,5 +77,7 @@ export const useProductStore = defineStore("product", () => {
     getProductsCategory,
     getProductsPrice,
     categories,
+    getProduct,
+    categoryProducts,
   };
 });

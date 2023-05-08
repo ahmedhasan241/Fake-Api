@@ -41,11 +41,12 @@
     </div>
     <div class="card-group container mt-5">
       <div class="row justify-content-around px-5">
-        <div
-          class="card rounded my-2 pt-3 mx-auto justify-content-center"
+        <NuxtLink
+          class="card rounded text-decoration-none my-2 pt-3 mx-auto justify-content-center"
           v-for="product in store.products"
           :key="product.id"
           style="width: 270px; height: 249px"
+          :to="`/store/${product.id}`"
         >
           <img
             :src="`${product.image}`"
@@ -56,7 +57,7 @@
             <p class="card-title mx-auto">{{ product.title }}</p>
             <p class="card-text text-danger">$ {{ product.price }}</p>
           </div>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </div>

@@ -1,0 +1,16 @@
+
+        <div
+          class="card rounded"
+          v-for="product in store.products"
+          :key="product.id"
+        >
+          <img
+            :src="`${product.image}`"
+            class="card-image card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <p class="card-title">{{ product.title }}</p>
+            <p class="card-text text-danger">$ {{ product.price }}</p>
+          </div>
+        </div>
