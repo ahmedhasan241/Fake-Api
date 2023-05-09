@@ -57,7 +57,9 @@ export const useProductStore = defineStore("product", () => {
     products.value = await response.json();
   }
   function getProductsRange(start, end) {
-    products.value = products.filter((prod) => prod.price <= end && prod.price >= start);
+   return products.value.filter(
+      (prod) => prod.price <= Number(end) && prod.price >= Number(start)
+    );
   }
   async function getProductsPrice(start, length) {
     let Api = `https://fakestoreapi.com/products`;
