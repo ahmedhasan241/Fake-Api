@@ -13,6 +13,20 @@ export const useProductStore = defineStore("product", () => {
       },
     },
   ]); // 20
+  const randomProduct = ref([
+    {
+      id: "",
+      title: "",
+      price: "",
+      description: "",
+      category: "",
+      image: "",
+      rating: {
+        rate: "",
+        count: "",
+      },
+    },
+  ]); // 20
   const categoryProducts = ref([
     {
       id: "",
@@ -43,6 +57,12 @@ export const useProductStore = defineStore("product", () => {
     let response = await fetch(Api);
     products.value = await response.json();
   }
+  async function getRandomProduct(params) {
+    let Api = "https://fakestoreapi.com/products";
+
+    let response = await fetch(Api);
+    products.value = await response.json();
+  }
   async function getProduct(params) {
     let Api = `https://fakestoreapi.com/products/${params}`;
 
@@ -57,7 +77,9 @@ export const useProductStore = defineStore("product", () => {
     products.value = await response.json();
   }
   function getProductsRange(start, end) {
-    products.value = products.filter((prod) => prod.price <= end && prod.price >= start);
+    products.value = products.filter(
+      (prod) => prod.price <= end && prod.price >= start
+    );
   }
   async function getProductsPrice(start, length) {
     let Api = `https://fakestoreapi.com/products`;
@@ -78,5 +100,7 @@ export const useProductStore = defineStore("product", () => {
     getProduct,
     categoryProducts,
     product,
+    randomProduct,
+    getRandomProduct,
   };
 });

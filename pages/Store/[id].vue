@@ -17,12 +17,12 @@
       </ol>
     </nav>
     <div class="row mt-5">
-      <div class="col-10">
+      <div class="col-lg-10 col-12">
         <div class="card border-0 mb-3 d-flex flex-sm-row flex-xs-column">
           <div class="card-image">
             <img
               :src="`${store.product.image}`"
-              class="rounded-start"
+              class="rounded-start mx-auto"
               alt="..."
               style="width: 270px; height: 270px"
             />
@@ -70,14 +70,14 @@
             </button>
           </div>
         </div>
-        <div class="my-5 bg-light-subtle p-5">
+        <div class="my-5 col-sm-12 bg-light-subtle p-0 p-md-5">
           <span class="fs-3 my-5 fw-medium text-primary"
             >Product Infomation</span
           >
           <p class="mt-5 fs-5">{{ store.product.description }}</p>
         </div>
       </div>
-      <div class="col-2"></div>
+      <div class="col-2 d-flex d-lg-column d-none"></div>
       <StoreRelatedProduct :products="store.products" />
     </div>
   </div>

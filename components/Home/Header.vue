@@ -1,7 +1,7 @@
 <template>
   <div id="carouselExample" class="slide-show carousel slide mb-5">
     <div class="container carousel-inner text-light">
-      <div class="carousel-item active p-5 text-center">
+      <div class="carousel-item active py-3 px-5 text-center">
         <div class="row justify-content-md-around">
           <div class="col-xs-12 col-lg-5 my-5 px-2">
             <h1>Mac Book Pro</h1>
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item p-5 container text-center">
+      <div class="carousel-item py-3 px-5 container text-center">
         <div class="row justify-content-md-around">
           <div class="col-xs-12 col-lg-5 my-5 px-2">
             <h1>Iphone Xs Max</h1>
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item p-5 container text-center">
+      <div class="carousel-item py-3 px-5 container text-center">
         <div class="row justify-content-md-around">
           <div class="col-xs-12 col-lg-5 my-5 px-2">
             <h1>Iphone 6 Plus</h1>
