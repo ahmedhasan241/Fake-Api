@@ -1,60 +1,58 @@
 <template>
   <div class="my-5 text-center">
     <h1 class="my-5">Best Seller</h1>
-
-    <div class="btn-group" role="group" aria-label="Basic example">
+    <div
+      class="btn-group d-md-block d-none"
+      role="group"
+      aria-label="Basic example"
+    >
       <button
-        @click="store.getProducts({ limit: 12 })"
+        @click="store.getProducts({ limit: 10 })"
         type="button"
         class="btn light"
       >
         All
       </button>
       <button
-        @click="store.getProductsCategory('electronics')"
+        v-for="cate in store.categories"
+        @click="store.getProductsCategory(cate)"
+        :key="cate.id"
         type="button"
-        class="btn light"
+        class="btn light text-capitalize"
       >
-        Electronics
-      </button>
-      <button
-        @click="store.getProductsCategory('jewelery')"
-        type="button"
-        class="btn light"
-      >
-        Jewelery
-      </button>
-      <button
-        @click="store.getProductsCategory('men\'s clothing')"
-        type="button"
-        class="btn light"
-      >
-        Men's Clothing
-      </button>
-      <button
-        @click="store.getProductsCategory('women\'s clothing')"
-        type="button"
-        class="btn light"
-      >
-        Women's Clothing
+        {{ cate }}
       </button>
     </div>
-    <div class="card-group container mt-5">
-      <div class="row justify-content-around px-5">
+    <div class="dropdown-center d-md-none d-block">
+      <button
+        class="btn btn-light btn-lg dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filter Products
+      </button>
+    </div>
+    <div class="container mt-5">
+      <div
+        class="row justify-content-center justify-content-sm-around mb-5 text-center"
+      >
         <NuxtLink
-          class="card rounded text-decoration-none my-2 pt-3 mx-auto justify-content-center"
           v-for="product in store.products"
           :key="product.id"
-          style="width: 270px; height: 249px"
+          style="width: 250px; height: 249px"
           :to="`/store/${product.id}`"
+          class="card shadow text-decoration-none col-xs-10 col-sm-5 col-lg-4 col-xl-4 text-center my-5"
         >
           <img
             :src="`${product.image}`"
-            class="card-image mx-auto card-img-top"
+            class="card-img-top mx-auto mt-3 h-50 w-50"
             alt="..."
           />
-          <div class="card-body">
-            <p class="card-title mx-auto">{{ product.title }}</p>
+          <div class="card-body h-50">
+            <h6 class="card-title" style="font-size: 13px">
+              {{ product.title }}
+            </h6>
             <p class="card-text text-danger">$ {{ product.price }}</p>
           </div>
         </NuxtLink>
@@ -69,7 +67,7 @@ import { useProductStore } from "~/stores/product";
 const store = useProductStore();
 
 onMounted(() => {
-  store.getProducts({ limit: 12 });
+  store.getProducts({ limit: 10 });
 });
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container footer-contain">
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-4">
         <h1 class="text-body-secondary mb-3">Bouncer</h1>
@@ -161,4 +161,8 @@
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.footer-contain {
+  margin-top: 125px;
+}
+</style>

@@ -13,6 +13,20 @@ export const useProductStore = defineStore("product", () => {
       },
     },
   ]); // 20
+  const randomProduct = ref([
+    {
+      id: "",
+      title: "",
+      price: "",
+      description: "",
+      category: "",
+      image: "",
+      rating: {
+        rate: "",
+        count: "",
+      },
+    },
+  ]); // 20
   const categoryProducts = ref([
     {
       id: "",
@@ -40,6 +54,12 @@ export const useProductStore = defineStore("product", () => {
     for (let param in params) {
       Api += `?${param}=${params[param]}`;
     }
+    let response = await fetch(Api);
+    products.value = await response.json();
+  }
+  async function getRandomProduct(params) {
+    let Api = "https://fakestoreapi.com/products";
+
     let response = await fetch(Api);
     products.value = await response.json();
   }
@@ -80,5 +100,7 @@ export const useProductStore = defineStore("product", () => {
     getProduct,
     categoryProducts,
     product,
+    randomProduct,
+    getRandomProduct,
   };
 });

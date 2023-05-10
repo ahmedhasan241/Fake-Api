@@ -1,26 +1,28 @@
 <template>
-  <div class="container my-5">
+  <div class="container related-prod">
     <h1 class="my-5 text-center">Related Products</h1>
-    <div class="card-group container mt-5">
-      <div class="row justify-content-around px-5">
-        <NuxtLink
-          class="card rounded text-decoration-none my-2 pt-3 mx-auto justify-content-center"
-          v-for="product in products.slice(0,3)"
-          :key="product.id"
-          style="width: 270px; height: 249px"
-          :to="`/store/${product.id}`"
-        >
-          <img
-            :src="`${product.image}`"
-            class="card-image mx-auto card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <p class="card-title mx-auto">{{ product.title }}</p>
-            <p class="card-text text-danger">$ {{ product.price }}</p>
-          </div>
-        </NuxtLink>
-      </div>
+    <div
+      class="row justify-content-center justify-content-sm-between mb-5 text-center"
+    >
+      <NuxtLink
+        v-for="product in products.slice(0, 4)"
+        :key="product.id"
+        style="width: 250px; height: 249px"
+        :to="`/store/${product.id}`"
+        class="card shadow text-decoration-none col-10 col-sm-5 col-lg-3 col-xl-3 text-center my-5"
+      >
+        <img
+          :src="`${product.image}`"
+          class="card-img-top mx-auto mt-3 h-50 w-50"
+          alt="..."
+        />
+        <div class="card-body h-50">
+          <h6 class="card-title" style="font-size: 13px">
+            {{ product.title }}
+          </h6>
+          <p class="card-text text-danger">$ {{ product.price }}</p>
+        </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -31,4 +33,8 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.related-prod {
+  margin: 100px 0;
+}
+</style>
