@@ -59,9 +59,14 @@ export const useProductStore = defineStore("product", () => {
   }
   async function getRandomProduct(params) {
     let Api = "https://fakestoreapi.com/products";
+  
+    if(products.value.length == 0){
+      let response = await fetch(Api);
+      products.value = await response.json();
+    }
+      let randomProduct = [] 
+      products.value = randomProducts
 
-    let response = await fetch(Api);
-    products.value = await response.json();
   }
   async function getProduct(params) {
     let Api = `https://fakestoreapi.com/products/${params}`;

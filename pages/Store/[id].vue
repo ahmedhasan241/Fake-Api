@@ -61,6 +61,8 @@
             <button
               type="button"
               class="btn btn-outline-primary mt-3 p-2 px-lg-5 align-items-center"
+                @click='cart.addToCart(store.product)'
+
             >
               <Icon
                 name="material-symbols:shopping-cart-sharp"
@@ -85,7 +87,8 @@
 
 <script setup lang="ts">
 import { useProductStore } from "~/stores/product";
-
+import { useCartStore } from "~/stores/cart";
+const cart = useCartStore();
 const store = useProductStore();
 const route = useRoute();
 const id = route.params.id;
