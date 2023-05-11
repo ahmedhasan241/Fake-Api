@@ -46,7 +46,6 @@ import { useProductStore } from "~/stores/product";
 
 let minValue = ref("");
 let maxValue = ref("");
-let filteredProducts = ref([]);
 
 const store = useProductStore();
 
@@ -96,11 +95,10 @@ onMounted(() => {
         minValue.value = minVal;
         maxValue.value = maxVal;
         console.log(minValue.value, maxValue.value);
-        filteredProducts.value = store.getProductsRange(
+        store.getProductsRange(
           minValue.value,
           maxValue.value
         );
-        console.log(filteredProducts);
       }
     });
   });

@@ -18,7 +18,7 @@
           >
         </div>
 
-        <Range />
+        <Range @rangeChanged="filterProducts" />
       </div>
       <div class="card-group col-lg-9">
         <div
@@ -60,9 +60,12 @@ const store = useProductStore();
 useHead({
   titleTemplate: "Bouncer - Store",
 });
+
+
 onMounted(() => {
   store.getProducts({ limit: 20 });
 });
+
 </script>
 
 <style scoped>

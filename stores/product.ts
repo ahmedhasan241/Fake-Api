@@ -1,18 +1,7 @@
 export const useProductStore = defineStore("product", () => {
-  const products = ref([
-    {
-      id: "",
-      title: "",
-      price: "",
-      description: "",
-      category: "",
-      image: "",
-      rating: {
-        rate: "",
-        count: "",
-      },
-    },
-  ]); // 20
+  const products = ref([]);
+  const sourceProducts = ref([]);
+  const rangeObj = ref({});
   const randomProduct = ref([
     {
       id: "",
@@ -56,6 +45,10 @@ export const useProductStore = defineStore("product", () => {
     }
     let response = await fetch(Api);
     products.value = await response.json();
+    sourceProducts.value = products.value;
+    if (rangeObj.value.start && rangeObj.value.end) {
+      getProductsRange(rangeObj.value.start, rangeObj.value.end);
+    }
   }
 
   async function getProduct(params) {
@@ -70,9 +63,14 @@ export const useProductStore = defineStore("product", () => {
 
     let response = await fetch(Api);
     products.value = await response.json();
+    sourceProducts.value = products.value;
+    if (rangeObj.value.start && rangeObj.value.end) {
+      getProductsRange(rangeObj.value.start, rangeObj.value.end);
+    }
   }
   function getProductsRange(start, end) {
-    return products.value.filter(
+    rangeObj.value = { start, end };
+    products.value = sourceProducts.value.filter(
       (prod) => prod.price <= Number(end) && prod.price >= Number(start)
     );
   }
@@ -81,7 +79,7 @@ export const useProductStore = defineStore("product", () => {
 
     let response = await fetch(Api);
     products.value = await response.json();
-    console.log(products.value.slice(start, length));
+    sourceProducts.value = products.value;
     return products.price.slice(start, length);
   }
 
